@@ -14,10 +14,14 @@
   "keywords": [
     "narev",
     "llm",
-    "pricing",
+    "real-time-pricing",
+    "live-pricing",
+    "price-updates",
+    "model-pricing",
+    "token-pricing",
+    "cost-estimation",
+    "llm-costs",
     "finops",
-    "usage-based-billing",
-    "polar",
     "mcp"
   ],
   "logo": "assets/narev-logo.svg"
