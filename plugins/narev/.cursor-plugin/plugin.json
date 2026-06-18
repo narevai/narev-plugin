@@ -9,7 +9,7 @@
     "url": "https://narev.ai"
   },
   "homepage": "https://narev.ai/docs",
-  "repository": "https://github.com/narevai/skills",
+  "repository": "https://github.com/narevai/narev-plugin",
   "license": "MIT",
   "keywords": [
     "narev",

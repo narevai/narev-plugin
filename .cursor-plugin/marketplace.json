@@ -13,6 +13,8 @@
       "name": "narev",
       "source": "./plugins/narev",
       "description": "Real-time LLM pricing, cost estimation and usage-based billing skills for AI agents.",
+      "repository": "https://github.com/narevai/narev-plugin",
+      "logo": "assets/narev-logo.svg",
       "keywords": [
         "narev",
         "llm",
