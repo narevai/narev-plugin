@@ -5,14 +5,27 @@
     "email": "cursor@narev.ai"
   },
   "metadata": {
-    "description": "Official Narev Cursor plugins for LLM pricing and usage-based billing.",
+    "description": "Official Narev Cursor plugins for real-time LLM pricing and cost estimation.",
     "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "narev",
       "source": "./plugins/narev",
-      "description": "Real-time LLM pricing, cost estimation and usage-based billing skills for AI agents."
+      "description": "Real-time LLM pricing, cost estimation and usage-based billing skills for AI agents.",
+      "keywords": [
+        "narev",
+        "llm",
+        "real-time-pricing",
+        "live-pricing",
+        "price-updates",
+        "model-pricing",
+        "token-pricing",
+        "cost-estimation",
+        "llm-costs",
+        "finops",
+        "mcp"
+      ]
     }
   ]
 }
