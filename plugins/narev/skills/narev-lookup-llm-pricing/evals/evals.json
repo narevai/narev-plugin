@@ -1,0 +1,73 @@
+{
+  "skill_name": "narev-lookup-llm-pricing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "what's the current input and output token price for gpt-4o on openai? i need usd per million tokens for a slide deck",
+      "expected_output": "GET /v1/price/openai with model_id=gpt-4o or /v1/price/search?q=gpt-4o; read pricing.prompt and pricing.completion; convert to per-million",
+      "files": [],
+      "expectations": [
+        "Uses GET https://api.narev.ai/v1/price/openai or GET https://api.narev.ai/v1/price/search",
+        "Does not use GET /v1/models/pricing or GET /models/pricing",
+        "States rates are USD per token from pricing.prompt and pricing.completion",
+        "Multiplies by 1_000_000 for per-million display"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "i have 1200 prompt tokens and 400 completion tokens on claude-sonnet-4 from anthropic. how much did that one call cost in usd?",
+      "expected_output": "POST /v1/calculate with modelId, provider anthropic, usage integers; report costBreakdown.total",
+      "files": [],
+      "expectations": [
+        "Uses POST https://api.narev.ai/v1/calculate",
+        "Does not use POST /models/pricing/calculate or POST /v1/models/pricing/calculate",
+        "Includes all required usage integers with zeros for unused categories",
+        "References costBreakdown.total"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "which providers does narev support for llm pricing?",
+      "expected_output": "GET /v1/reference/providers",
+      "files": [],
+      "expectations": [
+        "Uses GET https://api.narev.ai/v1/reference/providers",
+        "Describes data as provider_id and name pairs",
+        "Does not invent providers not from the API"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "my calculate request returns 400. my body only has promptTokens and completionTokens in usage",
+      "expected_output": "400 from usage validation; all usage fields required; pass 0 for unused",
+      "files": [],
+      "expectations": [
+        "References POST /v1/calculate",
+        "Lists cacheReadTokens, cacheWriteTokens, reasoningTokens as required with 0 if unused"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "i want to snapshot model prices into our repo every night. which api should the script call?",
+      "expected_output": "update-llm-pricing; paginate GET /v1/price/search or GET /v1/price per provider; not calculate",
+      "files": [],
+      "expectations": [
+        "Points to update-llm-pricing for committed snapshots",
+        "Recommends GET /v1/price/search or GET /v1/price/{provider_id} with pagination",
+        "Does not recommend POST /v1/calculate for bulk snapshots",
+        "Does not use GET /v1/models/pricing"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "which narev api endpoint shows me the cheapest provider for gpt-4o across all hosts?",
+      "expected_output": "GET /v1/find/cheapest/gpt-4o sorted by pricing.prompt ascending",
+      "files": [],
+      "expectations": [
+        "Uses GET https://api.narev.ai/v1/find/cheapest/gpt-4o",
+        "States results sort by prompt price cheapest first",
+        "Does not use POST /v1/calculate to compare providers"
+      ]
+    }
+  ]
+}

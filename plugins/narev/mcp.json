@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "narev": {
+      "type": "http",
+      "url": "https://mcp.narev.ai"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "skill_name": "narev-update-llm-pricing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "we need to regenerate our committed model pricing file from narev so billing runs offline. what's the right approach?",
+      "expected_output": "Paginate GET /v1/price/search or GET /v1/price per provider; map pricing.prompt/completion; no API key",
+      "files": [],
+      "expectations": [
+        "Uses GET https://api.narev.ai/v1/price/search or GET https://api.narev.ai/v1/price/{provider_id} as the catalog source",
+        "Does not use GET /v1/models/pricing or POST /v1/calculate for bulk snapshots",
+        "Describes pagination with page and page_size",
+        "States no API key required"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "our registry stores inputPerMTok from price_prompt but the api returns pricing.prompt. how do we map in the update script?",
+      "expected_output": "pricing.prompt is USD per token; multiply by 1_000_000 for per-million fields",
+      "files": [],
+      "expectations": [
+        "Maps pricing.prompt and pricing.completion from price API rows",
+        "Multiplies by 1_000_000 when destination uses per-million tokens",
+        "Warns against double-scaling"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "i only need the exact json body rules for POST /v1/calculate. which skill?",
+      "expected_output": "lookup-llm-pricing for calculate; update for snapshots only",
+      "files": [],
+      "expectations": [
+        "Points to lookup-llm-pricing for POST /v1/calculate",
+        "Clarifies update-llm-pricing uses price search or price by provider for snapshots"
+      ]
+    }
+  ]
+}

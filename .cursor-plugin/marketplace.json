@@ -18,6 +18,11 @@
       "name": "starter-advanced",
       "source": "./plugins/starter-advanced",
       "description": "Full-featured plugin with rules, skills, agents, commands, hooks, and MCP"
+    },
+    {
+      "name": "narev",
+      "source": "./plugins/narev",
+      "description": "Real-time LLM pricing, Narev docs, and usage-based billing skills"
     }
   ]
 }

@@ -1,0 +1,24 @@
+{
+  "name": "narev",
+  "displayName": "Narev",
+  "version": "1.1.0",
+  "description": "Real-time LLM pricing, cost estimation, Narev docs, and usage-based billing skills for AI agents.",
+  "author": {
+    "name": "Narev",
+    "email": "ai@narev.ai",
+    "url": "https://narev.ai"
+  },
+  "homepage": "https://narev.ai/docs",
+  "repository": "https://github.com/narevai/skills",
+  "license": "MIT",
+  "keywords": [
+    "narev",
+    "llm",
+    "pricing",
+    "finops",
+    "usage-based-billing",
+    "polar",
+    "mcp"
+  ],
+  "logo": "assets/narev-logo.png"
+}
