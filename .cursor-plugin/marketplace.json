@@ -6,13 +6,12 @@
   },
   "metadata": {
     "description": "Official Narev Cursor plugins for real-time LLM pricing and cost estimation.",
-    "version": "0.1.0",
-    "pluginRoot": "plugins"
+    "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "narev",
-      "source": "narev",
+      "source": "plugins/narev",
       "description": "Real-time LLM pricing, cost estimation and usage-based billing skills for AI agents.",
       "repository": "https://github.com/narevai/narev-plugin",
       "keywords": [
