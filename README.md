@@ -1,34 +1,54 @@
-# Cursor plugin template
+# Narev Cursor Plugin
 
-Build and publish Cursor Marketplace plugins from a single repo.
+Official [Cursor Marketplace](https://cursor.com/marketplace) plugin for real-time LLM pricing, cost estimation, Narev documentation, and usage-based billing.
 
-Two starter plugins are included:
+## What's included
 
-- **starter-simple**: rules and skills only
-- **starter-advanced**: rules, skills, agents, commands, hooks, MCP, and scripts
+- **MCP server** — hosted at `https://mcp.narev.ai` (configured automatically on install; no API key required for pricing and docs tools)
+- **5 skills** vendored from [narevai/skills](https://github.com/narevai/skills)
 
-## Getting started
+| Skill | Purpose |
+|-------|---------|
+| `narev-starter` | Start here — routes to the right skill or docs path |
+| `narev-lookup-llm-pricing` | Pricing API reference (seven public endpoints) |
+| `narev-update-llm-pricing` | Pin/snapshot live pricing into your repo |
+| `narev-nextjs-patterns` | Next.js App Router + Vercel AI SDK billing |
+| `clerk-narev` | Clerk auth + Narev/Polar usage-based billing |
 
-[Use this template](https://github.com/cursor/plugin-template/generate) to create a new repository, then customize:
+## Example prompts
 
-1. `.cursor-plugin/marketplace.json`: set marketplace `name`, `owner`, and `metadata`.
-2. `plugins/*/.cursor-plugin/plugin.json`: set `name` (lowercase kebab-case), `displayName`, `author`, `description`, `keywords`, `license`, and `version`.
-3. Replace placeholder rules, skills, agents, commands, hooks, scripts, and logos.
+| You say | Skill |
+|---------|-------|
+| "How does the Narev pricing API work?" | `narev-lookup-llm-pricing` |
+| "Calculate USD for this token usage" | `narev-lookup-llm-pricing` |
+| "Snapshot model pricing into a JSON file in my repo" | `narev-update-llm-pricing` |
+| "Which Narev skill should I use for billing middleware?" | `narev-starter` |
+| "Set up a new Next.js app with Narev billing and usage dashboard" | `narev-nextjs-patterns` |
+| "Add Narev billing to my existing Next.js chat route" | `narev-nextjs-patterns` |
 
-To add more plugins, see `docs/add-a-plugin.md`.
+## MCP tools
 
-## Single plugin vs multi-plugin
+When the plugin is installed, the agent can use these MCP tools:
 
-This template defaults to **multi-plugin** (multiple plugins in one repo).
+- `list_providers`, `list_models`, `get_prices`, `calculate_cost` — live pricing
+- `search_narev_docs`, `query_docs_filesystem_narev_docs` — Narev documentation
 
-For a **single plugin**, move your plugin folder contents to the repository root, keep one `.cursor-plugin/plugin.json`, and remove `.cursor-plugin/marketplace.json`.
+## Development
 
-## Submission checklist
+Plugin source lives in `plugins/narev/`. Marketplace metadata is in `.cursor-plugin/marketplace.json`.
 
-- Each plugin has a valid `.cursor-plugin/plugin.json`.
-- Plugin names are unique, lowercase, and kebab-case.
-- `.cursor-plugin/marketplace.json` entries map to real plugin folders.
-- All frontmatter metadata is present in rule, skill, agent, and command files.
-- Logos are committed and referenced with relative paths.
-- `node scripts/validate-template.mjs` passes.
-- Repository link is ready for submission to the Cursor team (Slack or `kniparko@anysphere.com`).
+Validate the plugin manifest and structure:
+
+```bash
+node scripts/validate-template.mjs
+```
+
+### Sync skills from upstream
+
+Skills are vendored from [narevai/skills](https://github.com/narevai/skills). To pull updates, copy the `skills/` directory from the upstream repository into `plugins/narev/skills/`.
+
+## Resources
+
+- [Narev documentation](https://narev.ai/docs)
+- [Agent quickstart](https://narev.ai/docs/quickstart-agents)
+- [Narev skills repository](https://github.com/narevai/skills)
