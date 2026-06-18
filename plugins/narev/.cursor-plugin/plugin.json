@@ -1,8 +1,8 @@
 {
   "name": "narev",
   "displayName": "Narev",
-  "version": "1.1.0",
-  "description": "Real-time LLM pricing, cost estimation, Narev docs, and usage-based billing skills for AI agents.",
+  "version": "0.1.0",
+  "description": "Real-time LLM pricing, cost estimation and usage-based billing skills for AI agents.",
   "author": {
     "name": "Narev",
     "email": "ai@narev.ai",

@@ -1,28 +1,18 @@
 {
-  "name": "cursor-plugin-starters",
+  "name": "narev-plugins",
   "owner": {
-    "name": "Your Org",
-    "email": "plugins@example.com"
+    "name": "Narev",
+    "email": "cursor@narev.ai"
   },
   "metadata": {
-    "description": "Starter marketplace template for Cursor plugins",
+    "description": "Official Narev Cursor plugins for LLM pricing and usage-based billing.",
     "version": "0.1.0"
   },
   "plugins": [
     {
-      "name": "starter-simple",
-      "source": "./plugins/starter-simple",
-      "description": "Minimal plugin with rules and skills only"
-    },
-    {
-      "name": "starter-advanced",
-      "source": "./plugins/starter-advanced",
-      "description": "Full-featured plugin with rules, skills, agents, commands, hooks, and MCP"
-    },
-    {
       "name": "narev",
       "source": "./plugins/narev",
-      "description": "Real-time LLM pricing, Narev docs, and usage-based billing skills"
+      "description": "Real-time LLM pricing, cost estimation and usage-based billing skills for AI agents."
     }
   ]
 }
